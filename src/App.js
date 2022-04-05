@@ -4,15 +4,24 @@ import './App.css';
 import { Button, Input, FormControl } from '@material-ui/core';
 import Message from './Message';
 
+import db from './firebase';
+
 function App() {
   const [input, setInput] = useState('');
-  const [messege, setMessege] = useState([
-    {"name":"John","message":"Hello","timestamp":"12:00"},
-    {"name":"Doe","message":"hi!","timestamp":"12:05"},
-    {"name":"John","message":"How are you?","timestamp":"12:10"},
-    {"name":"Doe","message":"I am fine","timestamp":"12:15"}
-  ]);
+  // const [messege, setMessege] = useState([
+  //   {"name":"John","message":"Hello","timestamp":"12:00"},
+  //   {"name":"Doe","message":"hi!","timestamp":"12:05"},
+  //   {"name":"John","message":"How are you?","timestamp":"12:10"},
+  //   {"name":"Doe","message":"I am fine","timestamp":"12:15"}
+  // ]);
+  const [messege, setMessege] = useState([]);
   const [username, setUsername] = useState('');
+
+  useEffect(() => {
+    db.collection('messages').orderBy('timestamp').onSnapshot(snapshot => {
+      setMessege(snapshot.docs.map(doc => doc.data()));
+    });
+  }, []);
 
   useEffect(() => {
     setUsername(prompt('Please enter your name'));
