@@ -20,7 +20,7 @@ function App() {
 
   useEffect(() => {
     db.collection('messages').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
-      setMessege(snapshot.docs.map(doc => doc.data()));
+      setMessege(snapshot.docs.map(doc => ({id: doc.id, message: doc.data()})));
     });
   }, []);
 
@@ -50,8 +50,8 @@ function App() {
 
       <div className="app__messages">
         {
-          messege.map(message => {
-            return <Message username={username} message={message} />
+          messege.map(({id, message}) => {
+            return <Message key={id} username={username} message={message} />
           })
         }
       </div>
