@@ -36,7 +36,7 @@ function App() {
       <div className="app__messages">
         {
           messege.map(message => {
-            return <Message message={message} />
+            return <Message username={username} message={message} />
           })
         }
       </div>

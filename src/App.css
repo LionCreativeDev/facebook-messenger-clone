@@ -10,6 +10,11 @@
   position: absolute;
   padding: 20px;
 } */
+
+.app__messages{
+  padding: 50px;
+}
+
 .app__message{
   flex: 1;
 }
