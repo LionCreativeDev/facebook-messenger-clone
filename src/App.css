@@ -10,6 +10,23 @@
   position: absolute;
   padding: 20px;
 } */
+.app__messageForm{
+  /* padding: 20px; */
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+  background-color: lightgrey;
+  /* margin: 20px; */
+  border-radius: 25px;
+}
+
+.app__formControl{
+  display: flex !important;
+  flex-direction: row !important;
+  /* align-items: center !important;
+  justify-content: center !important; */
+}
 
 .app__messages{
   padding: 50px;

@@ -3,7 +3,7 @@
     text-align: left !important;
     /*background-color: #e2dede !important;*/
     background-color: #e5f7fd !important;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     width: fit-content;
     padding: 0;
 }
@@ -13,6 +13,6 @@
     text-align: right !important;
     /*background-color: #c8eaff !important;*/
     background-color: #c7edfc !important;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     width: fit-content;
 }

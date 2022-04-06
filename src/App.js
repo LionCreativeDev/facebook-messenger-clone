@@ -1,7 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import logo from './images/logo.png';
 import './App.css';
-import { Button, Input, FormControl } from '@material-ui/core';
+import FlipMove from 'react-flip-move';
+import { Button, Input, FormControl, InputLabel } from '@material-ui/core';
+import IconButton from '@mui/material/IconButton';
+import SendIcon from '@mui/icons-material/Send';
 import Message from './Message';
 
 import db from './firebase';
@@ -48,22 +51,30 @@ function App() {
         <span><h2>Facebook Messenger Clone</h2>Using Firebase Realtime Database</span>
       </div>
 
-      <div className="app__messages">
-        {
-          messege.map(({id, message}) => {
-            return <Message key={id} username={username} message={message} />
-          })
-        }
-      </div>
-
-      <form>
+      <form className='app__messageForm'>
         {/* <input value={input} onChange={event => setInput(event.target.value)} className='app__message' type="text" placeholder="Enter your messege here" />
         <button disabled={!input} className='app__sendMessege' type="submit" onClick={sendMessage}>Send</button> */}
-        <FormControl>
-          <Input value={input} onChange={event => setInput(event.target.value)} aria-describedby="Enter your messege here" />
-          <Button disabled={!input} variant="contained" color="primary" type="submit" onClick={sendMessage}>Send</Button>
+        <FormControl className='app__formControl'>
+          <InputLabel htmlFor="my-input">Enter your messege here</InputLabel>
+          <Input className='app__message' value={input} onChange={event => setInput(event.target.value)} aria-describedby="Enter your messege here" />
+          {/* <Button disabled={!input} variant="contained" color="primary" type="submit" onClick={sendMessage}>Send</Button> */}
+          <IconButton className='app__sendMessege' aria-label="Send Message" disabled={!input} variant="contained" color="primary" type="submit" onClick={sendMessage}>
+            <SendIcon />
+          </IconButton>
         </FormControl>
       </form>
+
+      <div className="app__messages">
+        <FlipMove>
+          {
+            messege.map(({id, message}) => {
+              return <Message key={id} username={username} message={message} />
+            })
+          }
+        </FlipMove>
+      </div>
+
+      
       
     </div>
   );
