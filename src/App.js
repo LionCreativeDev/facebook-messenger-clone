@@ -22,7 +22,10 @@ function App() {
   const [username, setUsername] = useState('');
 
   useEffect(() => {
-    db.collection('messages').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
+    // db.collection('messages').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
+    //   setMessege(snapshot.docs.map(doc => ({id: doc.id, message: doc.data()})));
+    // });
+    db.collection('messages').orderBy('timestamp', 'asc').onSnapshot(snapshot => {
       setMessege(snapshot.docs.map(doc => ({id: doc.id, message: doc.data()})));
     });
   }, []);
